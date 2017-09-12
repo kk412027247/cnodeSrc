@@ -1,0 +1,53 @@
+<%- layout('layout') %>
+<div id="content">
+	<div class="panel">
+		<div class="header">
+			<ul class="breadcrumb">
+				<li><a href="/">主页</a><span class="divider"> /</span></li>
+				<li>发布话题</li>
+			</ul>
+		</div>
+		<div class="inner">
+			<% if((typeof error)!='undefined'){ %>
+				<div class="alert alert-error">
+					<strong><%=error%></strong>
+				</div>
+			<% } %>
+
+			<% if((typeof success)!='undefined'){ %>
+				<div class="alert alert-error">
+					<strong><%=success%></strong>
+				</div>
+			<% } %>
+			<form id="create_topic_form" action="/topic/create" method="post">
+				<span class="tab-selector">选择板块</span>
+				<select id="tab-value" name="tab" >
+					<option value="tab1">板块1</option>
+					<option value="tab2">板块2</option>
+				</select>
+				<br>
+				<input class="span9" type="text" name="title" id="title" placeholder="请输入标题" style="width:70%"></input>
+				<div class="markdown_editor in_editor">
+					<div class="markdown_in_editor">
+						<textarea name="t_content" cols="30" rows="10" class="editor" placeholder="请输入内容"></textarea>
+						<div class="editor_buttons">
+							<input type="submit" class="span-primary submit_btn" name="">
+						</div>
+					</div>	
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/editor/editor.css">
+<script scr='/markdownit.js'></script>
+<script src='/webuploader/webuploader.withoutimage.js'></script>
+<script src='/editor/editor.js'></script>
+<script src='/editor/ext.js'></script>
+<script type="text/javascript">
+$(function(){
+	var editor=new Editor();
+	editor.render()
+})
+</script>

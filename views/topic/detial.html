@@ -1,0 +1,62 @@
+<%-layout('layout')%>
+<div id="content">
+	<div class="panel">
+		<div class="header topic_header">
+			<span class="topic_full_title">
+				<%=topic.title%>
+			</span>
+			<div class="changes">
+				<span>作者：<%=topic.username%></span>
+				<span>发布时间：<%=topic.tinserTime.toLocaleDateString()+' '+topic.tinserTime.toLocaleTimeString()%></span>
+			</div>
+		</div>
+		<div class="inner topic">
+			<div class="topic_content">
+				<%- md.render(topic.content) %>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="panel">
+		<div class="header">
+			<span>回复数量：<%=count||0%></span>
+		</div>
+		<div class="inner">
+			<%- include reply/list.html%>
+		</div>
+	</div>
+	<div class="panel">
+		<div class="header">
+			<span>添加回复</span>
+		</div>
+		<div class="inner reply">
+			<form id="reply_form" action="/reply/reply" method="post">
+				<br>
+				<!-- 评论绑定帖子 -->
+				<input class="span9" type="hidden" name="topicId" value="<%=topic._id%>" placeholder="请输入标题" style="width:70%"></input>
+				<div class="markdown_editor in_editor">
+					<div class="markdown_in_editor">
+						<textarea name="t_content" cols="30" rows="10" class="editor" placeholder="请输入内容"></textarea>
+						<div class="editor_buttons">
+							<input type="submit" class="span-primary submit_btn" name="" value="回复">
+						</div>
+					</div>	
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/editor/editor.css">
+<script scr='/markdownit.js'></script>
+<script src='/webuploader/webuploader.withoutimage.js'></script>
+<script src='/editor/editor.js'></script>
+<script src='/editor/ext.js'></script>
+<script type="text/javascript">
+$(function(){
+	var editor=new Editor();
+	editor.render()
+})
+</script>

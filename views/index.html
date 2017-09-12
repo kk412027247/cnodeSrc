@@ -1,0 +1,40 @@
+<%- layout('layout') %>
+
+<div id="content">
+	<div class="panel">
+		<div class="header">
+		<a href="/" class="topic-tab current-tab">全部</a>
+		<a href="/?tab=tab1"  class="topic-tab">精华</a>
+		<a href="/?tab=tab2" class="topic-tab">分享</a>
+
+		</div>
+		<div class="inner">
+			<div id="topic_list">
+				<% include /topic/list.html %>
+			</div>
+			<div class="pagination">
+				<ul>
+
+					<li><a href="/?tab=<%=tab%>&page=1">&lt;&lt;</a></li>
+					<%if(page-2 > 1){%>
+						<li><a>...</a></li>
+					<%}%>
+					<% if(page-1>=1){ %>
+						<li class="disabled active"><a href="/?tab=<%=tab%>&page=<%=page-1%>"><%=page-1%></a></li>
+					<% } %>
+
+					<li class="disabled active"><a href="/?tab=<%=tab%>&page=<%=page%>"><%=page%></a></li>
+
+					<% if(page+1<=pageCount){ %>
+						<li class="disabled active"><a href="/?tab=<%=tab%>&page=<%=page+1%>"><%=page+1%></a></li>
+					<% } %>
+
+					<%if(page+2 < pageCount){%>
+						<li><a>...</a></li>
+					<%}%>
+					<li><a href="/?tab=<%=tab%>&page=<%=pageCount%>">&gt;&gt;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

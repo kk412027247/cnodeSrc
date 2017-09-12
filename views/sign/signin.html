@@ -1,0 +1,44 @@
+<%-layout('layout')%>
+<%- partial('sidebar') %>
+<div id="content">
+	<div class="panel">
+		<div class="header">
+			<ul class="breadcrumb">
+				<li><a href="/">首页</a><span class="divider">/</span></li>
+				<li>登陆</li>
+			</ul>
+		</div>
+		<div class="inner">
+		<% if((typeof error)!='undefined'){ %>
+			<div class="alert alert-error">
+				<strong><%=error%></strong>
+			</div>
+		<% } %>
+
+		<% if((typeof success)!='undefined'){ %>
+			<div class="alert alert-error">
+				<strong><%=success%></strong>
+			</div>
+		<% } %>
+			<form action="/signin" id="signin_form" class="form-horizontal" method="post">
+				<div class="control-group">
+					<label class="control-label" for="name">用户名</label>
+					<div class="controls">
+						<input id="name" class="input-xlarge" type="text" name="name">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="pass">密码</label>
+					<div class="controls">
+						<input id="pass" class="input-xlarge" type="text" name="pass">
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<input class="span-primary" type="submit" value="登陆" name="">
+					<input class="span-info" type="reset" value="重置" name="">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

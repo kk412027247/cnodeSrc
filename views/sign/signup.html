@@ -1,0 +1,56 @@
+<%-layout('layout')%>
+<%- partial('sidebar') %>
+<div id="content">
+	<div class="panel">
+		<div class="header">
+			<ul class="breadcrumb">
+				<li><a href="/">首页</a><span class="divider">/</span></li>
+				<li>注册</li>
+			</ul>
+		</div>
+		<div class="inner">
+		<% if((typeof error)!='undefined'){ %>
+			<div class="alert alert-error">
+				<strong><%=error%></strong>
+			</div>
+		<% } %>
+
+		<% if((typeof success)!='undefined'){ %>
+			<div class="alert alert-error">
+				<strong><%=success%></strong>
+			</div>
+		<% } %>
+
+			<form action="/signup" id="signup_form" class="form-horizontal" method="post">
+				<div class="control-group">
+					<label class="control-label" for="loginname">用户名</label>
+					<div class="controls">
+						<input id="loginname" class="input-xlarge" type="text" name="loginname">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="pass">密码</label>
+					<div class="controls">
+						<input id="pass" class="input-xlarge" type="text" name="pass">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="re_pass">密码确认</label>
+					<div class="controls">
+						<input id="re_pass" class="input-xlarge" type="text" name="re_pass">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="email">电子邮箱</label>
+					<div class="controls">
+						<input id="email" class="input-xlarge" type="email" name="email">
+					</div>
+				</div>
+				<div class="form-actions">
+					<input class="span-primary" type="submit" value="注册" name="">
+					<input class="span-info" type="reset" value="重置" name="">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

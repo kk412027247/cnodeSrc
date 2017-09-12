@@ -1,0 +1,7 @@
+<% for(i=0;i< replys.length;i++){ %>
+	<div class="cell">
+		<span class="reply_author"><%=replys[i].username%></span>
+		<span class="reply_time pull-right"><%=replys[i].insertTime.toLocaleDateString()%></span>	
+		<div><%=replys[i].content%></div>
+	</div>
+<% } %>
